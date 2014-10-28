@@ -364,11 +364,13 @@ namespace MonoGame.Framework.Content.Pipeline.Builder
                     propInfo.SetValue(processor, param.Value, null);
                 else
                 {
+                     object val = propInfo.PropertyType == typeof(Char) ? param.Value.ToString().Trim('\'') : param.Value;
+
                     // Find a type converter for this property.
                     var typeConverter = TypeDescriptor.GetConverter(propInfo.PropertyType);
                     if (typeConverter.CanConvertFrom(param.Value.GetType()))
                     {
-                        var propValue = typeConverter.ConvertFrom(null, CultureInfo.InvariantCulture, param.Value);
+                        var propValue = typeConverter.ConvertFrom(null, CultureInfo.InvariantCulture, val);
                         propInfo.SetValue(processor, propValue, null);
                     }
                 }
