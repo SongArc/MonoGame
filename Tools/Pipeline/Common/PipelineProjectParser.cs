@@ -344,6 +344,8 @@ namespace MonoGame.Tools.Pipeline
                                 //      im just not writting the value at all.
                                 if (value != null)
                                 {
+                                    value = value is char ? "'" + value + "'": value;
+
                                     var converter = PipelineTypes.FindConverter(value.GetType());
                                     var valueStr = converter.ConvertTo(null, CultureInfo.InvariantCulture, value, typeof(string));
                                     line = string.Format(lineFormat, "processorParam", string.Format(processorParamFormat, j.Name, valueStr));
