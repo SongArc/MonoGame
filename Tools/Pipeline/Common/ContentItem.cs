@@ -175,16 +175,16 @@ namespace MonoGame.Tools.Pipeline
                         var src = ProcessorParams[p.Name];
                         if (src != null)
                         {
-                            var srcType = src.GetType();
+                            object val = p.Type == typeof(char) ? src.ToString().Trim('\'') : src;
 
                             var converter = PipelineTypes.FindConverter(p.Type);
 
                             // Should we throw an exception here?
                             // This property will actually not be editable in the property grid
                             // since we do not have a type converter for it.
-                            if (converter.CanConvertFrom(srcType))
+                            if (converter.CanConvertFrom(val.GetType()))
                             {
-                                var dst = converter.ConvertFrom(null, CultureInfo.InvariantCulture, src);
+                                var dst = converter.ConvertFrom(null, CultureInfo.InvariantCulture, val);
                                 ProcessorParams[p.Name] = dst;
                             }
                         }
