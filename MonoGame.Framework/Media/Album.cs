@@ -91,6 +91,8 @@ namespace Microsoft.Xna.Framework.Media
             {
 #if WINDOWS_PHONE
                 return this.album.HasArt;
+#elif WINDOWS_PHONE81
+                return true;
 #elif WINDOWS_STOREAPP
                 return this.thumbnail != null;
 #elif IOS
