@@ -98,12 +98,6 @@
     <Compile Include="Windows8\GamerServices\SignedInGamer.cs">
       <Platforms>Windows8,WindowsPhone81</Platforms>
     </Compile>
-    <Compile Include="Windows8\GamerServices\EventAsync.cs">
-      <Platforms>Windows8,WindowsPhone81</Platforms>
-    </Compile>
-    <Compile Include="Windows8\GamerServices\InputDialog.cs">
-      <Platforms>Windows8,WindowsPhone81</Platforms>
-    </Compile>
     <Compile Include="Windows\GamerServices\Guide.cs">
       <Platforms>Windows8,Windows,WindowsGL,WindowsPhone,WindowsPhone81</Platforms>
     </Compile>
@@ -115,13 +109,7 @@
   <ItemGroup />
   <ItemGroup />
   <ItemGroup />
-  <ItemGroup>
-    <Page Include="Themes\generic.xaml">
-      <Platforms>Windows8,WindowsPhone81</Platforms>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup />
   <ItemGroup />
   <ItemGroup />

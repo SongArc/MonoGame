@@ -443,9 +443,21 @@
     <Compile Include="Input\Keyboard.cs">
       <ExcludePlatforms>PSMobile,Android,Ouya</ExcludePlatforms>
     </Compile>
+    <Compile Include="Input\KeyboardInput.cs">
+      <Platforms>Android,iOS,Windows8,WindowsPhone,WindowsPhone81</Platforms>
+    </Compile>
+    <Compile Include="Input\KeyboardInput.WinRT.cs">
+      <Platforms>Windows8,WindowsPhone81</Platforms>
+    </Compile>
     <Compile Include="Input\KeyboardState.cs" />
     <Compile Include="Input\Keys.cs" />
     <Compile Include="Input\KeyState.cs" />
+    <Compile Include="Input\MessageBox.cs">
+      <Platforms>Android,iOS,Windows8,WindowsPhone,WindowsPhone81</Platforms>
+    </Compile>
+    <Compile Include="Input\MessageBox.WinRT.cs">
+      <Platforms>Windows8,WindowsPhone81</Platforms>
+    </Compile>
     <Compile Include="Input\Mouse.cs" />
     <Compile Include="Input\MouseState.cs" />
     <Compile Include="Input\ThumbStickDefinition.cs" />
@@ -561,7 +573,13 @@
   <ItemGroup />
   <ItemGroup />
   <ItemGroup />
-  <ItemGroup />
+  <ItemGroup>
+    <Page Include="Themes\generic.xaml">
+      <Platforms>Windows8,WindowsPhone81</Platforms>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
   <ItemGroup />
   <ItemGroup />
   <ItemGroup />

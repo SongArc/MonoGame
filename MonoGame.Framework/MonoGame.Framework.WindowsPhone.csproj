@@ -88,6 +88,9 @@
     <Reference Include="Microsoft.Xna.Framework">
       <Aliases>MicrosoftXnaFramework</Aliases>
     </Reference>
+    <Reference Include="Microsoft.Xna.Framework.GamerServices">
+      <Aliases>MicrosoftXnaGamerServices</Aliases>
+    </Reference>
     <Reference Include="SharpDX">
       <HintPath>..\ThirdParty\Dependencies\SharpDX\Windows%20Phone\$(Platform)\SharpDX.dll</HintPath>
     </Reference>
@@ -479,9 +482,21 @@
     <Compile Include="Input\Keyboard.cs">
       <ExcludePlatforms>PSMobile,Android,Ouya</ExcludePlatforms>
     </Compile>
+    <Compile Include="Input\KeyboardInput.cs">
+      <Platforms>Android,iOS,Windows8,WindowsPhone,WindowsPhone81</Platforms>
+    </Compile>
+    <Compile Include="Input\KeyboardInput.WP.cs">
+      <Platforms>WindowsPhone</Platforms>
+    </Compile>
     <Compile Include="Input\KeyboardState.cs" />
     <Compile Include="Input\Keys.cs" />
     <Compile Include="Input\KeyState.cs" />
+    <Compile Include="Input\MessageBox.cs">
+      <Platforms>Android,iOS,Windows8,WindowsPhone,WindowsPhone81</Platforms>
+    </Compile>
+    <Compile Include="Input\MessageBox.WP.cs">
+      <Platforms>WindowsPhone</Platforms>
+    </Compile>
     <Compile Include="Input\Mouse.cs" />
     <Compile Include="Input\MouseState.cs" />
     <Compile Include="Input\ThumbStickDefinition.cs" />
