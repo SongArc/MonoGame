@@ -26,8 +26,6 @@
     <DefineConstants>DEBUG;OPENGL;OPENAL;IOS;GLES</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <MtouchDebug>True</MtouchDebug>
     <MtouchUseArmv7>false</MtouchUseArmv7>
   </PropertyGroup>
@@ -53,8 +51,6 @@
     <DefineConstants>DEBUG;OPENGL;OPENAL;IOS;GLES</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <MtouchDebug>True</MtouchDebug>
     <MtouchUseArmv7>false</MtouchUseArmv7>
   </PropertyGroup>
@@ -96,7 +92,6 @@
     <Reference Include="System" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Core" />
-    <Reference Include="Xamarin.iOS" />
     <Reference Include="OpenTK-1.0" />
   </ItemGroup>
   <ItemGroup>
