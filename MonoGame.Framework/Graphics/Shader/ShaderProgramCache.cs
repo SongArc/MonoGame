@@ -129,9 +129,13 @@ namespace Microsoft.Xna.Framework.Graphics
 #else
             GL.GetProgram(program, GetProgramParameterName.LinkStatus, out linked);
 #endif
+
             GraphicsExtensions.LogGLError("VertexShaderCache.Link(), GL.GetProgram");
             if (linked == 0)
             {
+                var error = GL.GetErrorCode();
+                var log = GL.GetProgramInfoLog(program);
+
 #if !GLES
                 var log = GL.GetProgramInfoLog(program);
                 Console.WriteLine(log);
@@ -143,7 +147,8 @@ namespace Microsoft.Xna.Framework.Graphics
 #else
                 GL.DeleteProgram(program);
 #endif
-                throw new InvalidOperationException("Unable to link effect program");
+
+                throw new InvalidOperationException("Unable to link effect program: {" + error.ToString() + ", " + log + "}");
             }
 
             ShaderProgram shaderProgram = new ShaderProgram(program);
