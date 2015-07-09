@@ -22,7 +22,6 @@ namespace Microsoft.Xna.Framework.Content.Pipeline.Audio
         AudioFormat format;
         int loopLength;
         int loopStart;
-        bool disposed;
 
         /// <summary>
         /// Gets the raw audio data.
@@ -126,9 +125,6 @@ namespace Microsoft.Xna.Framework.Content.Pipeline.Audio
         /// </param>
         public void ConvertFormat(ConversionFormat formatType, ConversionQuality quality, string saveToFile)
         {
-            if (disposed)
-                throw new ObjectDisposedException("AudioContent");
-
             var temporarySource = Path.GetTempFileName();
             var temporaryOutput = Path.GetTempFileName();
             try
@@ -281,6 +277,13 @@ namespace Microsoft.Xna.Framework.Content.Pipeline.Audio
                     channelCount,
                     format,
                     sampleRate);
+
+                // Loop start and length in number of samples. Defaults to entire sound
+                loopStart = 0;
+                if (data != null && bitsPerSample > 0 && channelCount > 0)
+                    loopLength = data.Count / ((bitsPerSample / 8) * channelCount);
+                else
+                    loopLength = 0;
             }
             finally
             {
@@ -291,7 +294,8 @@ namespace Microsoft.Xna.Framework.Content.Pipeline.Audio
 
         private void Read(string filename)
         {
-            using (var fs = new FileStream(filename, FileMode.Open))
+            // Must be opened in read mode otherwise it fails to open read-only files (found in some source control systems)
+            using (var fs = new FileStream(filename, FileMode.Open, FileAccess.Read))
             {
                 var data = new byte[fs.Length];
                 fs.Read(data, 0, data.Length);

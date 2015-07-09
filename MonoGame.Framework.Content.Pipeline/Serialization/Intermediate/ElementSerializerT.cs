@@ -34,6 +34,9 @@ namespace Microsoft.Xna.Framework.Content.Pipeline.Serialization.Intermediate
 
         private static string[] ReadElements(IntermediateReader input)
         {
+            if (input.Xml.IsEmptyElement)
+                return new string[0];
+
             string str = string.Empty;
             while (input.Xml.NodeType != XmlNodeType.EndElement)
             {
@@ -43,9 +46,13 @@ namespace Microsoft.Xna.Framework.Content.Pipeline.Serialization.Intermediate
                     str += input.Xml.ReadString();
             }
 
+            // Special case for char ' '
+            if (str.Length > 0 && str.Trim() == string.Empty)
+                return new string[] { str };
+
             var elements = str.Split(_seperators, StringSplitOptions.RemoveEmptyEntries);
-            if (elements.Length == 0)
-                elements = new[] { str };
+            if (elements.Length == 1 && string.IsNullOrEmpty(elements[0]))
+                return new string[0];
 
             return elements;
         }

@@ -3,7 +3,7 @@ using UIKit;
 
 namespace Microsoft.Xna.Framework.Input
 {
-    public partial class KeyboardInput
+    public static partial class KeyboardInput
     {
         private static TaskCompletionSource<string> tcs;
         private static UIAlertView alert;

@@ -1,104 +1,119 @@
-﻿using System.Collections.Generic;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using Gtk;
 
 namespace MonoGame.Tools.Pipeline
 {
-	public partial class NewTemplateDialog : Gtk.Dialog
-	{
-		public string name;
-		public ContentItemTemplate templateFile;
+    public partial class NewTemplateDialog : Dialog
+    {
+        public string name;
+        public ContentItemTemplate templateFile;
 
-		List<ContentItemTemplate> items;
-		TreeStore listStore;
+        List<ContentItemTemplate> items;
+        TreeStore listStore;
 
-		public NewTemplateDialog (IEnumerator<ContentItemTemplate> enums)
-		{
-			this.Build ();
+        Button buttonOk;
 
-			this.Title = "New Item";
-			Gtk.TreeViewColumn column = new Gtk.TreeViewColumn ();
+        public NewTemplateDialog (Window parrent, IEnumerator<ContentItemTemplate> enums) : base(Global.GetNewDialog(parrent.Handle))
+        {
+            Build();
 
-			Gtk.CellRendererPixbuf iconCell = new Gtk.CellRendererPixbuf ();
-			Gtk.CellRendererText textCell = new Gtk.CellRendererText ();
-			Gtk.CellRendererText textCell2 = new Gtk.CellRendererText ();
+            this.Title = "New Item";
 
-			column.PackStart (iconCell, false);
-			column.PackStart (textCell, false);
-			column.PackStart (textCell2, false);
+            buttonOk = (Button)this.AddButton("Ok", ResponseType.Ok);
+            buttonOk.Sensitive = false;
 
-			treeview1.AppendColumn (column);
+            this.AddButton("Cancel", ResponseType.Cancel);
+            this.DefaultResponse = ResponseType.Ok;
 
-			column.AddAttribute (iconCell,  "pixbuf", 0);
-			column.AddAttribute (textCell, "text", 1);
-			column.AddAttribute (textCell, "text", 2);
+            var column = new TreeViewColumn ();
 
-			listStore = new Gtk.TreeStore (typeof (Gdk.Pixbuf), typeof (string), typeof (string));
-			treeview1.Model = listStore;
+            var iconCell = new CellRendererPixbuf ();
+            var textCell = new CellRendererText ();
+            var textCell2 = new CellRendererText ();
+            textCell2.Visible = false;
 
-			items = new List<ContentItemTemplate> ();
-			int i = 0;
+            column.PackStart (iconCell, false);
+            column.PackStart (textCell, false);
+            column.PackStart (textCell2, false);
 
-			while (enums.MoveNext ()) {
-				listStore.AppendValues (new Gdk.Pixbuf (System.IO.Path.GetDirectoryName (enums.Current.TemplateFile) + "/" + enums.Current.Icon), enums.Current.Label, i.ToString());
-				items.Add (enums.Current);
-				i++;
-			}
-		}
+            treeview1.AppendColumn (column);
 
-		protected void OnResponse(object sender, EventArgs e)
-		{
-			this.name = this.entry1.Text;
+            column.AddAttribute (iconCell,  "pixbuf", 0);
+            column.AddAttribute (textCell, "text", 1);
+            column.AddAttribute (textCell2, "text", 2);
 
-			TreeIter iter;
-			if (treeview1.Selection.GetSelected (out iter)) {
-				int tid = Convert.ToInt32 (treeview1.Model.GetValue (iter, 2).ToString ());
-				templateFile = items [tid];
-			}
+            listStore = new TreeStore (typeof (Gdk.Pixbuf), typeof (string), typeof (string));
+            treeview1.Model = listStore;
 
-			this.Destroy ();
-		}
+            items = new List<ContentItemTemplate> ();
+            int i = 0;
 
-		public void ButtonOkEnabled()
-		{
-			TreeIter iter;
+            while (enums.MoveNext ()) {
+                listStore.AppendValues (new Gdk.Pixbuf (System.IO.Path.GetDirectoryName (enums.Current.TemplateFile) + "/" + enums.Current.Icon), enums.Current.Label, i.ToString());
+                items.Add (enums.Current);
+                i++;
+            }
+        }
 
-			if (entry1.Text != "") {
-				if (MainWindow.CheckString (entry1.Text, MainWindow.AllowedCharacters)) {
-					if (treeview1.Selection.GetSelected (out iter)) {
-						buttonOk.Sensitive = true;
-						label2.Visible = false;
-					} else {
-						buttonOk.Sensitive = false;
-						label2.Visible = false;
-					}
-				} else {
-					buttonOk.Sensitive = false;
-					label2.Visible = true;
-				}
-			} else {
-				buttonOk.Sensitive = false;
-				label2.Visible = false;
-			}
-		}
+        protected void OnResponse(object sender, EventArgs e)
+        {
+            name = entry1.Text;
 
-		protected void OnTreeview1CursorChanged (object sender, EventArgs e)
-		{
-			TreeIter iter;
-			if(treeview1.Selection.GetSelected(out iter))
-				ButtonOkEnabled ();
-		}
+            TreeIter iter;
+            if (treeview1.Selection.GetSelected (out iter)) {
+                int tid = Convert.ToInt32 (treeview1.Model.GetValue (iter, 2).ToString ());
+                templateFile = items [tid];
+            }
 
-		protected void OnEntry1Changed (object sender, EventArgs e)
-		{
-			ButtonOkEnabled ();
-		}
+            Destroy();
+        }
 
-		protected void OnButtonOkClicked (object sender, EventArgs e)
-		{
-			if (buttonOk.Sensitive) 
-				this.Respond (Gtk.ResponseType.Ok);
-		}
-	}
+        public void ButtonOkEnabled()
+        {
+            TreeIter iter;
+
+            if (entry1.Text != "") {
+                if (MainWindow.CheckString (entry1.Text, MainWindow.NotAllowedCharacters)) {
+                    if (treeview1.Selection.GetSelected (out iter)) {
+                        buttonOk.Sensitive = true;
+                        label2.Visible = false;
+                    } else {
+                        buttonOk.Sensitive = false;
+                        label2.Visible = false;
+                    }
+                } else {
+                    buttonOk.Sensitive = false;
+                    label2.Visible = true;
+                }
+            } else {
+                buttonOk.Sensitive = false;
+                label2.Visible = false;
+            }
+
+            if(label2.Visible)
+            {
+                var chars = MainWindow.NotAllowedCharacters.ToCharArray();
+                string notallowedchars = chars[0].ToString();
+
+                for (int i = 1; i < chars.Length; i++)
+                    notallowedchars += ", " + chars[i];
+
+                this.label2.LabelProp = "Your name contains one of not allowed letters: " + notallowedchars;
+            }
+        }
+
+        protected void OnTreeview1CursorChanged (object sender, EventArgs e)
+        {
+            TreeIter iter;
+            if(treeview1.Selection.GetSelected(out iter))
+                ButtonOkEnabled ();
+        }
+
+        protected void OnEntry1Changed (object sender, EventArgs e)
+        {
+            ButtonOkEnabled ();
+        }
+    }
 }
 
