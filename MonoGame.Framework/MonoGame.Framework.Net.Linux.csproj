@@ -22,7 +22,7 @@
     <OutputPath>bin\Linux\AnyCPU\Debug</OutputPath>
     <IntermediateOutputPath>obj\Linux\AnyCPU\Debug</IntermediateOutputPath>
     <DocumentationFile>bin\Linux\AnyCPU\Debug\MonoGame.Framework.Net.xml</DocumentationFile>
-    <DefineConstants>DEBUG;TRACE;LINUX;OPENGL;OPENAL;NET</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;LINUX;OPENGL;OPENAL;NET;DESKTOPGL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -32,7 +32,7 @@
     <OutputPath>bin\Linux\AnyCPU\Release</OutputPath>
     <IntermediateOutputPath>obj\Linux\AnyCPU\Release</IntermediateOutputPath>
     <DocumentationFile>bin\Linux\AnyCPU\Release\MonoGame.Framework.Net.xml</DocumentationFile>
-    <DefineConstants>TRACE;LINUX;OPENGL;OPENAL;NET</DefineConstants>
+    <DefineConstants>TRACE;LINUX;OPENGL;OPENAL;NET;DESKTOPGL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -90,6 +90,12 @@
     <Compile Include="GamerServices\PropertyDictionary.cs" />
     <Compile Include="GamerServices\SignedInGamerCollection.cs">
       <ExcludePlatforms>WindowsPhone</ExcludePlatforms>
+    </Compile>
+    <Compile Include="GamerServices\GuideAlreadyVisibleException.cs">
+      <Platforms>Android,MacOS,Ouya,Windows,WindowsGL,Linux</Platforms>
+    </Compile>
+    <Compile Include="GamerServices\GamerServicesDispatcher.cs">
+      <Platforms>MacOS,Windows,WindowsGL,Linux</Platforms>
     </Compile>
     <Compile Include="GamerServices\GamerServicesComponent.cs">
       <Platforms>Android,iOS,Linux,MacOS,Ouya,PSMobile,Windows,WindowsGL</Platforms>
@@ -184,14 +190,14 @@
     <Compile Include="Net\SendDataOptions.cs">
       <ExcludePlatforms>WindowsPhone,WindowsPhone81,Windows8</ExcludePlatforms>
     </Compile>
-    <Compile Include="Linux\GamerServices\Guide.cs">
-      <Platforms>Linux</Platforms>
+    <Compile Include="DesktopGL\GamerServices\Guide.cs">
+      <Platforms>WindowsGL,Linux</Platforms>
     </Compile>
-    <Compile Include="Linux\GamerServices\MonoGameGamerServicesHelper.cs">
-      <Platforms>Linux</Platforms>
+    <Compile Include="DesktopGL\GamerServices\MonoGameGamerServicesHelper.cs">
+      <Platforms>WindowsGL,Linux</Platforms>
     </Compile>
-    <Compile Include="Linux\GamerServices\SignedInGamer.cs">
-      <Platforms>Linux</Platforms>
+    <Compile Include="DesktopGL\GamerServices\SignedInGamer.cs">
+      <Platforms>WindowsGL,Linux</Platforms>
     </Compile>
   </ItemGroup>
   <ItemGroup />
@@ -221,4 +227,13 @@
       <Name>MonoGame.Framework.Linux</Name>
     </ProjectReference>
   </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties><Policies>
+    <TextStylePolicy inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/x-csharp" />
+    <CSharpFormattingPolicy IndentSwitchBody="True" IndentBlocksInsideExpressions="True" AnonymousMethodBraceStyle="NextLine" PropertyBraceStyle="NextLine" PropertyGetBraceStyle="NextLine" PropertySetBraceStyle="NextLine" EventBraceStyle="NextLine" EventAddBraceStyle="NextLine" EventRemoveBraceStyle="NextLine" StatementBraceStyle="NextLine"  ElseNewLinePlacement="NewLine" CatchNewLinePlacement="NewLine" FinallyNewLinePlacement="NewLine" WhileNewLinePlacement="DoNotCare" ArrayInitializerWrapping="DoNotChange"  ArrayInitializerBraceStyle="NextLine" BeforeMethodDeclarationParentheses="False" BeforeMethodCallParentheses="False" BeforeConstructorDeclarationParentheses="False" NewLineBeforeConstructorInitializerColon="NewLine" NewLineAfterConstructorInitializerColon="SameLine" BeforeDelegateDeclarationParentheses="False" NewParentheses="False" SpacesBeforeBrackets="False" inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp" />
+</Policies>
+</Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
 </Project>

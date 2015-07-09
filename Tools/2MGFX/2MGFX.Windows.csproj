@@ -50,6 +50,9 @@
     <Reference Include="SharpDX.D3DCompiler">
       <HintPath>..\..\ThirdParty\Dependencies\SharpDX\Windows\SharpDX.D3DCompiler.dll</HintPath>
     </Reference>
+    <Reference Include="CppNet">
+      <HintPath>..\..\ThirdParty\Dependencies\CppNet\CppNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -146,8 +149,8 @@
     <Compile Include="..\..\MonoGame.Framework\Ray.cs">
       <Link>MonoGame.Framework\Ray.cs</Link>
     </Compile>
-    <Compile Include="..\..\MonoGame.Framework\Utilities\ObjectFactoryWithReset.cs">
-      <Link>MonoGame.Framework\ObjectFactoryWithReset.cs</Link>
+    <Compile Include="..\..\MonoGame.Framework\Rectangle.cs">
+      <Link>MonoGame.Framework\Rectangle.cs</Link>
     </Compile>
     <Compile Include="..\..\MonoGame.Framework\Vector2.cs">
       <Link>MonoGame.Framework\Vector2.cs</Link>
@@ -158,11 +161,25 @@
     <Compile Include="..\..\MonoGame.Framework\Vector4.cs">
       <Link>MonoGame.Framework\Vector4.cs</Link>
     </Compile>
+    <Compile Include="..\..\MonoGame.Framework\Design\Vector2TypeConverter.cs">
+      <Link>MonoGame.Framework\Design\Vector2TypeConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MonoGame.Framework\Design\Vector3TypeConverter.cs">
+      <Link>MonoGame.Framework\Design\Vector3TypeConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MonoGame.Framework\Design\Vector4TypeConverter.cs">
+      <Link>MonoGame.Framework\Design\Vector4TypeConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MonoGame.Framework\Design\VectorConversion.cs">
+      <Link>MonoGame.Framework\Design\VectorConversion.cs</Link>
+    </Compile>
+    <Compile Include="..\..\MonoGame.Framework\Graphics\PackedVector\IPackedVector.cs">
+      <Link>MonoGame.Framework\Graphics\PackedVector\IPackedVector.cs</Link>
+    </Compile>
     <Compile Include="..\..\MonoGame.Framework\Utilities\Hash.cs">
       <Link>MonoGame.Framework\Utilities\Hash.cs</Link>
     </Compile>
     <Compile Include="MonoGame.Framework\GraphicsDevice.cs" />
-    <Compile Include="CompilerInclude.cs" />
     <Compile Include="ConstantBufferData.cs" />
     <Compile Include="ConstantBufferData.mojo.cs" />
     <Compile Include="ConstantBufferData.sharpdx.cs" />
@@ -171,6 +188,7 @@
     <Compile Include="EffectObject.hlsl.cs" />
     <Compile Include="EffectObject.pssl.cs" />
     <Compile Include="EffectObject.writer.cs" />
+    <Compile Include="IEffectCompilerOutput.cs" />
     <Compile Include="ShaderCompilerException.cs" />
     <Compile Include="ShaderData.cs" />
     <Compile Include="ShaderData.mojo.cs" />
@@ -189,6 +207,7 @@
     <Compile Include="ParseTree.cs" />
     <Compile Include="Scanner.cs" />
     <Compile Include="ParseTreeTools.cs" />
+    <Compile Include="Preprocessor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\ThirdParty\Dependencies\MojoShader\Windows\libmojoshader_64.dll">
@@ -214,4 +233,13 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties><Policies>
+    <TextStylePolicy inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/x-csharp" />
+    <CSharpFormattingPolicy IndentSwitchBody="True" IndentBlocksInsideExpressions="True" AnonymousMethodBraceStyle="NextLine" PropertyBraceStyle="NextLine" PropertyGetBraceStyle="NextLine" PropertySetBraceStyle="NextLine" EventBraceStyle="NextLine" EventAddBraceStyle="NextLine" EventRemoveBraceStyle="NextLine" StatementBraceStyle="NextLine"  ElseNewLinePlacement="NewLine" CatchNewLinePlacement="NewLine" FinallyNewLinePlacement="NewLine" WhileNewLinePlacement="DoNotCare" ArrayInitializerWrapping="DoNotChange"  ArrayInitializerBraceStyle="NextLine" BeforeMethodDeclarationParentheses="False" BeforeMethodCallParentheses="False" BeforeConstructorDeclarationParentheses="False" NewLineBeforeConstructorInitializerColon="NewLine" NewLineAfterConstructorInitializerColon="SameLine" BeforeDelegateDeclarationParentheses="False" NewParentheses="False" SpacesBeforeBrackets="False" inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp" />
+</Policies>
+</Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
 </Project>

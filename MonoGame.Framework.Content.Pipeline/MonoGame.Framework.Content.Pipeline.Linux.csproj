@@ -52,7 +52,7 @@
       <HintPath>..\ThirdParty\Dependencies\NVTT\Windows\Nvidia.TextureTools.dll</HintPath>
     </Reference>
     <Reference Include="SharpFont">
-      <HintPath>..\ThirdParty\Dependencies\SharpFont\x64\SharpFont.dll</HintPath>
+      <HintPath>..\ThirdParty\Dependencies\SharpFont\x32\SharpFont.dll</HintPath>
     </Reference>
     <Reference Include="ManagedPVRTC">
       <HintPath>..\ThirdParty\Dependencies\ManagedPVRTC\ManagedPVRTC.dll</HintPath>
@@ -232,6 +232,7 @@
     <Compile Include="Serialization\Intermediate\EnumSerializer.cs" />
     <Compile Include="Serialization\Intermediate\ExternalReferenceSerializer.cs" />
     <Compile Include="Serialization\Intermediate\FloatSerializer.cs" />
+    <Compile Include="Serialization\Intermediate\GenericCollectionHelper.cs" />
     <Compile Include="Serialization\Intermediate\IntermediateReader.cs" />
     <Compile Include="Serialization\Intermediate\IntermediateSerializer.cs" />
     <Compile Include="Serialization\Intermediate\IntermediateWriter.cs" />
@@ -241,6 +242,7 @@
     <Compile Include="Serialization\Intermediate\MatrixSerializer.cs" />
     <Compile Include="Serialization\Intermediate\NamedValueDictionarySerializer.cs" />
     <Compile Include="Serialization\Intermediate\NamespaceAliasHelper.cs" />
+    <Compile Include="Serialization\Intermediate\NonGenericIListSerializer.cs" />
     <Compile Include="Serialization\Intermediate\NullableSerializer.cs" />
     <Compile Include="Serialization\Intermediate\PlaneSerializer.cs" />
     <Compile Include="Serialization\Intermediate\PointSerializer.cs" />
@@ -278,6 +280,7 @@
     <Compile Include="InvalidContentException.cs" />
     <Compile Include="Mp3Importer.cs" />
     <Compile Include="NamedValueDictionary.cs" />
+    <Compile Include="OggImporter.cs" />
     <Compile Include="OpaqueDataDictionary.cs" />
     <Compile Include="OpenAssetImporter.cs" />
     <Compile Include="PipelineComponentScanner.cs" />

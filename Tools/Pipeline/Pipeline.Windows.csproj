@@ -63,8 +63,10 @@
     <Compile Include="Common\ContentItem.Importer.cs" />
     <Compile Include="Common\ContentItemTemplate.cs" />
     <Compile Include="Common\ContentItemState.cs" />
+    <Compile Include="Common\FileType.cs" />
     <Compile Include="Common\ProjectState.cs" />
     <Compile Include="Common\Selection.cs" />
+    <Compile Include="Common\PipelineController.MoveAction.cs" />
     <Compile Include="Common\PipelineController.NewAction.cs" />
     <Compile Include="Common\PipelineController.ExcludeAction.cs" />
     <Compile Include="Common\PipelineController.IncludeAction.cs" />
@@ -81,6 +83,9 @@
     <Compile Include="Common\PipelineTypes.cs" />
     <Compile Include="Common\Extensions.cs" />
     <Compile Include="Windows\UpdateAction.cs" />
+    <Compile Include="Windows\ContentIcons.cs">
+      <Platforms>Windows</Platforms>
+    </Compile>
     <Compile Include="Windows\EditorIcons.cs">
       <Platforms>Windows</Platforms>
     </Compile>
@@ -107,10 +112,6 @@
       <Platforms>Windows</Platforms>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Windows\AssemblyReferenceEditing.cs">
-      <Platforms>Windows</Platforms>
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Windows\PipelineProjectProxy.cs">
       <Platforms>Windows</Platforms>
     </Compile>
@@ -126,6 +127,34 @@
     <Compile Include="Windows\AboutDialog.Designer.cs">
       <Platforms>Windows</Platforms>
       <DependentUpon>AboutDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ReferenceDialog.cs">
+      <Platforms>Windows</Platforms>
+    </Compile>
+    <Compile Include="Windows\ReferenceDialog.Designer.cs">
+      <Platforms>Windows</Platforms>
+      <DependentUpon>ReferenceDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AddFileDialog.cs">
+      <Platforms>Windows</Platforms>
+    </Compile>
+    <Compile Include="Windows\AddFileDialog.Designer.cs">
+      <Platforms>Windows</Platforms>
+      <DependentUpon>AddFileDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AddFolderDialog.cs">
+      <Platforms>Windows</Platforms>
+    </Compile>
+    <Compile Include="Windows\AddFolderDialog.Designer.cs">
+      <Platforms>Windows</Platforms>
+      <DependentUpon>AddFolderDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\TextEditDialog.cs">
+      <Platforms>Windows</Platforms>
+    </Compile>
+    <Compile Include="Windows\TextEditDialog.Designer.cs">
+      <Platforms>Windows</Platforms>
+      <DependentUpon>TextEditDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <Platforms>Windows</Platforms>
@@ -146,6 +175,21 @@
       <Platforms>Windows</Platforms>
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Templates\Effect.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Effect.fx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Effect.template">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\SpriteEffect.fx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\SpriteEffect.template">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Templates\Xml.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -168,6 +212,18 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <EmbeddedResource Include="Windows\AddFileDialog.resx">
+      <Platforms>Windows</Platforms>
+      <DependentUpon>AddFileDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\AddFolderDialog.resx">
+      <Platforms>Windows</Platforms>
+      <DependentUpon>AddFolderDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\TextEditDialog.resx">
+      <Platforms>Windows</Platforms>
+      <DependentUpon>TextEditDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\MainView.resx">
       <Platforms>Windows</Platforms>
       <DependentUpon>MainView.cs</DependentUpon>
@@ -182,6 +238,10 @@
       <Platforms>Windows</Platforms>
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Windows\ReferenceDialog.resx">
+      <Platforms>Windows</Platforms>
+      <DependentUpon>ReferenceDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\NewContentDialog.resx">
       <Platforms>Windows</Platforms>
       <DependentUpon>NewContentDialog.cs</DependentUpon>
@@ -191,6 +251,7 @@
     <EmbeddedResource Include="Icons\missing.png" />
     <EmbeddedResource Include="Icons\folder_closed.png" />
     <EmbeddedResource Include="Icons\folder_open.png" />
+    <EmbeddedResource Include="Icons\folder_missing.png" />
     <EmbeddedResource Include="Icons\settings.png" />
   </ItemGroup>
   <ItemGroup />
@@ -221,4 +282,13 @@
       <Name>MGCB.Windows</Name>
     </ProjectReference>
   </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties><Policies>
+    <TextStylePolicy inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/x-csharp" />
+    <CSharpFormattingPolicy IndentSwitchBody="True" IndentBlocksInsideExpressions="True" AnonymousMethodBraceStyle="NextLine" PropertyBraceStyle="NextLine" PropertyGetBraceStyle="NextLine" PropertySetBraceStyle="NextLine" EventBraceStyle="NextLine" EventAddBraceStyle="NextLine" EventRemoveBraceStyle="NextLine" StatementBraceStyle="NextLine"  ElseNewLinePlacement="NewLine" CatchNewLinePlacement="NewLine" FinallyNewLinePlacement="NewLine" WhileNewLinePlacement="DoNotCare" ArrayInitializerWrapping="DoNotChange"  ArrayInitializerBraceStyle="NextLine" BeforeMethodDeclarationParentheses="False" BeforeMethodCallParentheses="False" BeforeConstructorDeclarationParentheses="False" NewLineBeforeConstructorInitializerColon="NewLine" NewLineAfterConstructorInitializerColon="SameLine" BeforeDelegateDeclarationParentheses="False" NewParentheses="False" SpacesBeforeBrackets="False" inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp" />
+</Policies>
+</Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
 </Project>
