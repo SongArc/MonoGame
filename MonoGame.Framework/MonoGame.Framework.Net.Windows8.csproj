@@ -13,6 +13,7 @@
     <AssemblyName>MonoGame.Framework.Net</AssemblyName>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoWarn>1591,0436</NoWarn>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
