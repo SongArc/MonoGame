@@ -41,8 +41,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="SharpDX">
       <HintPath>..\ThirdParty\Dependencies\SharpDX\Windows%20UAP\SharpDX.dll</HintPath>
     </Reference>
