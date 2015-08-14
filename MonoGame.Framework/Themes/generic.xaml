@@ -198,7 +198,7 @@
                     			<StackPanel
                     				x:Name="ContentPanel"
                     				Margin="{TemplateBinding Padding}"
-                    				MinWidth="600">
+                    				MinWidth="450">
                     				<TextBlock
                     					x:Name="TitleTextBlock"
                     					Style="{TemplateBinding TitleStyle}" />
