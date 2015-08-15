@@ -161,13 +161,18 @@ namespace Microsoft.Xna.Framework.Graphics
         private void UpdateDevice(Device device, DeviceContext context)
         {
             // TODO: Lost device logic!
-            SharpDX.Utilities.Dispose(ref _d3dDevice);
+            try
+            {
+                SharpDX.Utilities.Dispose(ref _d3dDevice);
+                SharpDX.Utilities.Dispose(ref _depthStencilView);
+                SharpDX.Utilities.Dispose(ref _d3dContext); // This throws a null reference exception on Windows 10 Mobile
+            }
+            catch (Exception)
+            {
+            }
+
             _d3dDevice = device;
-
-            SharpDX.Utilities.Dispose(ref _d3dContext);
             _d3dContext = context;
-
-            SharpDX.Utilities.Dispose(ref _depthStencilView);
 
             using (var dxgiDevice2 = device.QueryInterface<SharpDX.DXGI.Device2>())
             {
