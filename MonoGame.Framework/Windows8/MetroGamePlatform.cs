@@ -11,7 +11,9 @@ using System.Diagnostics;
 //using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
+using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml.Media;
 #if WINDOWS_PHONE81
@@ -100,7 +102,15 @@ namespace Microsoft.Xna.Framework
                 }
             }
 
+            CoreApplication.Suspending += this.CoreApplication_Suspending;
+
             Game.PreviousExecutionState = PreviousExecutionState;
+        }
+
+        private void CoreApplication_Suspending(object sender, SuspendingEventArgs e)
+        {
+            if (this.Game.GraphicsDevice != null)
+                this.Game.GraphicsDevice.Trim();
         }
 
         public override GameRunBehavior DefaultRunBehavior
