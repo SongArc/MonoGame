@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{65706950-696C-656E-2E4D-61634F535069}</ProjectGuid>
+    <ProjectTypeGuids>{948B3504-5B70-4649-8FE4-BDE1FB46EC69};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MonoGame.Tools.Pipeline</RootNamespace>
+    <AssemblyName>Pipeline</AssemblyName>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>1591,0436</NoWarn>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SuppressXamMacUpsell>True</SuppressXamMacUpsell>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <DebugType>full</DebugType>
+    <OutputPath>bin\MacOS\AnyCPU\Debug</OutputPath>
+    <IntermediateOutputPath>obj\MacOS\AnyCPU\Debug</IntermediateOutputPath>
+    <DocumentationFile>bin\MacOS\AnyCPU\Debug\Pipeline.xml</DocumentationFile>
+    <DefineConstants>DEBUG;TRACE;MONOMAC;GTK2</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <EnableCodeSigning>False</EnableCodeSigning>
+    <CreatePackage>False</CreatePackage>
+    <EnablePackageSigning>False</EnablePackageSigning>
+    <IncludeMonoRuntime>False</IncludeMonoRuntime>
+    <UseSGen>False</UseSGen>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <OutputPath>bin\MacOS\AnyCPU\Release</OutputPath>
+    <IntermediateOutputPath>obj\MacOS\AnyCPU\Release</IntermediateOutputPath>
+    <DocumentationFile>bin\MacOS\AnyCPU\Release\Pipeline.xml</DocumentationFile>
+    <DefineConstants>TRACE;MONOMAC;GTK2</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <EnableCodeSigning>False</EnableCodeSigning>
+    <CreatePackage>False</CreatePackage>
+    <EnablePackageSigning>False</EnablePackageSigning>
+    <IncludeMonoRuntime>False</IncludeMonoRuntime>
+    <UseSGen>False</UseSGen>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MonoMac" />
+    <Reference Include="System"></Reference>
+    <Reference Include="System.Design"></Reference>
+    <Reference Include="System.Runtime.Serialization"></Reference>
+    <Reference Include="System.Xml.Linq"></Reference>
+    <Reference Include="Microsoft.CSharp"></Reference>
+    <Reference Include="System.Xml"></Reference>
+    <Reference Include="atk-sharp">
+    </Reference>
+    <Reference Include="gdk-sharp">
+    </Reference>
+    <Reference Include="glade-sharp">
+    </Reference>
+    <Reference Include="glib-sharp">
+    </Reference>
+    <Reference Include="gtk-dotnet">
+    </Reference>
+    <Reference Include="gtk-sharp">
+    </Reference>
+    <Reference Include="pango-sharp">
+    </Reference>
+    <Reference Include="Mono.Posix">
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\History.cs">
+    </Compile>
+    <Compile Include="Program.cs">
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+    </Compile>
+    <Compile Include="..\MGCB\CommandLineParser.cs">
+      <Link>Common\CommandLineParser.cs</Link>
+    </Compile>
+    <Compile Include="Common\ActionStack.cs">
+    </Compile>
+    <Compile Include="Common\AssemblyAttributes.cs">
+    </Compile>
+    <Compile Include="Common\ContentFolder.cs">
+    </Compile>
+    <Compile Include="Common\ContentItem.cs">
+    </Compile>
+    <Compile Include="Common\ContentItem.Processor.cs">
+    </Compile>
+    <Compile Include="Common\ContentItem.Importer.cs">
+    </Compile>
+    <Compile Include="Common\ContentItemTemplate.cs">
+    </Compile>
+    <Compile Include="Common\ContentItemState.cs">
+    </Compile>
+    <Compile Include="Common\FileType.cs">
+    </Compile>
+    <Compile Include="Common\ProjectState.cs">
+    </Compile>
+    <Compile Include="Common\Selection.cs">
+    </Compile>
+    <Compile Include="Common\PipelineController.MoveAction.cs">
+    </Compile>
+    <Compile Include="Common\PipelineController.NewAction.cs">
+    </Compile>
+    <Compile Include="Common\PipelineController.ExcludeAction.cs">
+    </Compile>
+    <Compile Include="Common\PipelineController.IncludeAction.cs">
+    </Compile>
+    <Compile Include="Common\IController.cs">
+    </Compile>
+    <Compile Include="Common\IProjectItem.cs">
+    </Compile>
+    <Compile Include="Common\IProjectObserver.cs">
+    </Compile>
+    <Compile Include="Common\IView.cs">
+    </Compile>
+    <Compile Include="Common\PipelineProjectParser.cs">
+    </Compile>
+    <Compile Include="Common\Util.cs">
+    </Compile>
+    <Compile Include="Common\StringExtensions.cs">
+    </Compile>
+    <Compile Include="Common\CustomPropertyDescriptors.cs">
+    </Compile>
+    <Compile Include="Common\PipelineController.cs">
+    </Compile>
+    <Compile Include="Common\PipelineProject.cs">
+    </Compile>
+    <Compile Include="Common\PipelineTypes.cs">
+    </Compile>
+    <Compile Include="Common\Extensions.cs">
+    </Compile>
+    <Compile Include="Windows\UpdateAction.cs">
+    </Compile>
+    <Compile Include="Gtk\MainWindow.cs">
+      <Platforms>MacOS,Linux</Platforms>
+    </Compile>
+    <Compile Include="Gtk\Widgets\ProjectView.cs">
+      <Platforms>MacOS,Linux</Platforms>
+    </Compile>
+    <Compile Include="Gtk\Widgets\PropertyGridTable.cs">
+      <Platforms>MacOS,Linux</Platforms>
+    </Compile>
+    <Compile Include="Gtk\Widgets\PropertiesView.cs">
+      <Platforms>MacOS,Linux</Platforms>
+    </Compile>
+    <Compile Include="Gtk\Dialogs\AddItemDialog.cs">
+      <Platforms>MacOS,Linux</Platforms>
+    </Compile>
+    <Compile Include="Gtk\Dialogs\NewTemplateDialog.cs">
+      <Platforms>MacOS,Linux</Platforms>
+    </Compile>
+    <Compile Include="Gtk\Dialogs\TextEditorDialog.cs">
+      <Platforms>MacOS,Linux</Platforms>
+    </Compile>
+    <Compile Include="Gtk\Dialogs\CollectionEditorDialog.cs">
+      <Platforms>MacOS,Linux</Platforms>
+    </Compile>
+    <Compile Include="Gtk\Stetic.cs">
+      <Platforms>MacOS,Linux</Platforms>
+    </Compile>
+    <Compile Include="Gtk\MainWindow.GUI.cs">
+      <Platforms>MacOS,Linux</Platforms>
+    </Compile>
+    <Compile Include="Gtk\Dialogs\NewTemplateDialog.GUI.cs">
+      <Platforms>MacOS,Linux</Platforms>
+    </Compile>
+    <Compile Include="Gtk\Widgets\ProjectView.GUI.cs">
+      <Platforms>MacOS,Linux</Platforms>
+    </Compile>
+    <Compile Include="Gtk\Widgets\PropertiesView.GUI.cs">
+      <Platforms>MacOS,Linux</Platforms>
+    </Compile>
+    <Compile Include="Gtk\Dialogs\CollectionEditorDialog.GUI.cs">
+      <Platforms>MacOS,Linux</Platforms>
+    </Compile>
+    <Compile Include="Gtk\Widgets\PropertyGridTable.GUI.cs">
+      <Platforms>MacOS,Linux</Platforms>
+    </Compile>
+    <Compile Include="Gtk\Dialogs\AddItemDialog.GUI.cs">
+      <Platforms>MacOS,Linux</Platforms>
+    </Compile>
+    <Compile Include="Gtk\Dialogs\TextEditorDialog.GUI.cs">
+      <Platforms>MacOS,Linux</Platforms>
+    </Compile>
+    <Compile Include="Gtk\Global.cs">
+      <Platforms>MacOS,Linux</Platforms>
+    </Compile>
+    <Compile Include="Gtk\IgeMacIntegration.cs">
+      <Platforms>MacOS</Platforms>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+    </None>
+    <None Include="app.manifest">
+    </None>
+    <None Include="..\..\ThirdParty\Dependencies\Gtk\atk-sharp.dll.config">
+      <Platforms>MacOS</Platforms>
+      <Link>atk-sharp.dll.config</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\ThirdParty\Dependencies\Gtk\gdk-sharp.dll.config">
+      <Platforms>MacOS</Platforms>
+      <Link>gdk-sharp.dll.config</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\ThirdParty\Dependencies\Gtk\glade-sharp.dll.config">
+      <Platforms>MacOS</Platforms>
+      <Link>glade-sharp.dll.config</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\ThirdParty\Dependencies\Gtk\glib-sharp.dll.config">
+      <Platforms>MacOS</Platforms>
+      <Link>glib-sharp.dll.config</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\ThirdParty\Dependencies\Gtk\gtk-sharp.dll.config">
+      <Platforms>MacOS</Platforms>
+      <Link>gtk-sharp.dll.config</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\ThirdParty\Dependencies\Gtk\pango-sharp.dll.config">
+      <Platforms>MacOS</Platforms>
+      <Link>pango-sharp.dll.config</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Effect.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Effect.fx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Effect.template">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\SpriteEffect.fx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\SpriteEffect.template">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Xml.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\XmlContent.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\XmlContent.template">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\Font.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\SpriteFont.spritefont">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Templates\SpriteFont.template">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\background.png">
+      <Platforms>MacOS</Platforms>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="distribution.xml">
+      <Platforms>MacOS</Platforms>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App.ico">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Icons\blueprint.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Icons\missing.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Icons\folder_closed.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Icons\folder_open.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Icons\folder_missing.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Icons\settings.png">
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\App.icns">
+      <Platforms>MacOS</Platforms>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\MonoGame.Framework\MonoGame.Framework.MacOS.csproj">
+      <Project>{36C538E6-C32A-4A8D-A39C-566173D7118E}</Project>
+      <Name>MonoGame.Framework.MacOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MonoGame.Framework.Content.Pipeline\MonoGame.Framework.Content.Pipeline.MacOS.csproj">
+      <Project>{A6C47073-8FF9-4997-BA3A-BA257CC88CFE}</Project>
+      <Name>MonoGame.Framework.Content.Pipeline.MacOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MGCB\MGCB.MacOS.csproj">
+      <Project>{4243474D-4D2E-6361-4F53-4D4743422E4D}</Project>
+      <Name>MGCB.MacOS</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties><Policies>
+    <TextStylePolicy inheritsSet="VisualStudio" inheritsScope="text/plain" scope="text/x-csharp" />
+    <CSharpFormattingPolicy IndentSwitchBody="True" IndentBlocksInsideExpressions="True" AnonymousMethodBraceStyle="NextLine" PropertyBraceStyle="NextLine" PropertyGetBraceStyle="NextLine" PropertySetBraceStyle="NextLine" EventBraceStyle="NextLine" EventAddBraceStyle="NextLine" EventRemoveBraceStyle="NextLine" StatementBraceStyle="NextLine"  ElseNewLinePlacement="NewLine" CatchNewLinePlacement="NewLine" FinallyNewLinePlacement="NewLine" WhileNewLinePlacement="DoNotCare" ArrayInitializerWrapping="DoNotChange"  ArrayInitializerBraceStyle="NextLine" BeforeMethodDeclarationParentheses="False" BeforeMethodCallParentheses="False" BeforeConstructorDeclarationParentheses="False" NewLineBeforeConstructorInitializerColon="NewLine" NewLineAfterConstructorInitializerColon="SameLine" BeforeDelegateDeclarationParentheses="False" NewParentheses="False" SpacesBeforeBrackets="False" inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp" />
+</Policies>
+</Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+</Project>
